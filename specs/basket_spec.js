@@ -1,29 +1,41 @@
 var basket = require('../basket');
 var assert = require('assert');
-var item1 = require('../item');
-var item2 = require('../item');
-var item3 = require('../item');
+
+var Kazoo = {
+     name: "Kazoo",
+     price: 9
+}
+
+var PennyWhistle = {
+     name: "Penny Whistle",
+     price: 15
+}
+
+var Ocarina = {
+     name: "Ocarina",
+     price: 5
+}
 
 describe('List', function(){
      it('should be an empty array at start', function(){
           assert.equal(0, basket.purchases.length);
      })
      it('can have an item added', function(){
-          item1.setName("Kazoo");
-          item1.setPrice(5);
-          item2.setName("Penny Whistle");
-          item2.setPrice(15);
-          item3.setName("Ocarina");
-          item3.setPrice(7);
-          basket.add(item1);
-          basket.add(item2);
-          basket.add(item3);
+
+          basket.add(Kazoo);
+          basket.add(PennyWhistle);
+          basket.add(Ocarina);
           assert.equal(3, basket.purchases.length);
      })
-     it('can remove a specific item from the list', function(){
-          basket.remove(item2);
+     it('can have a specific item removed', function(){
+          basket.remove(PennyWhistle);
           assert.equal(2, basket.purchases.length);
      });
 
-     it('can calculate the total price of all purchases');
+     it('can provide a total price of all purchases', function(){
+          basket.add(PennyWhistle);
+          var subtotal = basket.subtotal();
+          assert.equal(29, subtotal);
+     });
+
 })
