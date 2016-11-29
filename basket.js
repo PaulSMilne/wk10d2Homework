@@ -1,8 +1,10 @@
-var item = require('./item');
+//var item = require('./item');
 
 var shoppingBasket = {
-     item1: item,
-     purchases: []
+     purchases: [],
+     add: function(item){
+          this.purchases.push(item);
+     }
 }
 
 module.exports = shoppingBasket;
