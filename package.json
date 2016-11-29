@@ -1,0 +1,17 @@
+{
+  "name": "basket",
+  "version": "1.0.0",
+  "description": "Homework for Codeclan week 10 day 2, cohort 7.",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.2"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Paul Milne",
+  "license": "ISC"
+}
