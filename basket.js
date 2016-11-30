@@ -4,6 +4,10 @@ var shoppingBasket = {
      addCustomer: function(customer){
           this.customers.push(customer);
      },
+     removeCustomer: function(customer){
+          var index = this.customers.indexOf(customer);
+          this.customers.splice(index, 1);
+     },
      add: function(item){
           this.purchases.push(item);
      },

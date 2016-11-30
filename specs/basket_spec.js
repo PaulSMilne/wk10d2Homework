@@ -72,4 +72,10 @@ describe('Basket', function(){
           var total = basket.loyal();
           assert.equal(13.30, total);
      })
+     it('should not take off a further 10 percent if the customer does not have a loyaltyCard', function(){
+          basket.addCustomer(Kyle);
+          basket.removeCustomer(Claudia);
+          var total = basket.loyal();
+          assert.equal(14.00, total);
+     })
 })
