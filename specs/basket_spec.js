@@ -57,19 +57,19 @@ describe('Basket', function(){
      });
 
      it('should take off 10 percent if the total is over 20', function(){
-          var total = basket.total();
+          var total = basket.overtwenty();
           assert.equal(26.10, total);
      });
 
      it('should not take off 10 percent if the total is under 20', function(){
           basket.remove(PennyWhistle);
-          var total = basket.total();
+          var total = basket.overtwenty();
           assert.equal(14, total);
      });
 
-     // it('should take off a further 10 percent if the customer has a loyaltyCard', function(){
-     //      basket.addCustomer(Claudia);
-     //      var total = basket.total();
-     //      assert.equal(13.30, total);
-     // })
+     it('should take off a further 10 percent if the customer has a loyaltyCard', function(){
+          basket.addCustomer(Claudia);
+          var total = basket.loyal();
+          assert.equal(13.30, total);
+     })
 })

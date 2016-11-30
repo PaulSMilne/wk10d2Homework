@@ -24,13 +24,25 @@ var shoppingBasket = {
           var finalSubtotal = subtotal.toFixed(2);
           return finalSubtotal;
      },
-     total: function(){
+
+     overtwenty: function(){
           var subtotal = this.subtotal();
           if (subtotal > 20){
-               var subtotal = subtotal - this.percentage(subtotal, 10);
+               subtotal -= this.percentage(subtotal, 10);
           }
-          return subtotal
+          return subtotal;
+     },
+
+     loyal: function(){
+          var subtotal = this.subtotal();
+          for (var customer of this.customers){
+               if (customer.loyaltyCard == true) {
+                    subtotal -= this.percentage(subtotal, 5);
+               }
+          }
+          return subtotal;
      }
+
 }
 
 
