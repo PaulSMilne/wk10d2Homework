@@ -1,6 +1,7 @@
 var shoppingBasket = {
      purchases: [],
      customers: [],
+     subtotal: 0,
      addCustomer: function(customer){
           this.customers.push(customer);
      },
@@ -10,43 +11,39 @@ var shoppingBasket = {
      },
      add: function(item){
           this.purchases.push(item);
+          this.subtotal += item.price;
      },
      remove: function(item){
           var index = this.purchases.indexOf(item);
           this.purchases.splice(index, 1);
-     },
-     subtotal: function(){
-          var subtotal = 0;
-          for (var item of this.purchases){
-               subtotal += item.price;
-          }
-          return subtotal;
+          this.subtotal -= item.price;
      },
      percentage: function(subtotal, integer){
           var multiplier = integer/100;
-          var subtotal = subtotal*multiplier;
-          var finalSubtotal = subtotal.toFixed(2);
-          return finalSubtotal;
+          var discount = subtotal*multiplier;
+          var finalDiscount = discount.toFixed(2);
+          return finalDiscount;
      },
-
      overtwenty: function(){
-          var subtotal = this.subtotal();
-          if (subtotal > 20){
-               subtotal -= this.percentage(subtotal, 10);
+          if (this.subtotal > 20){
+               this.subtotal -= this.percentage(this.subtotal, 10);
           }
-          return subtotal;
+          return this.subtotal;
      },
-
      loyal: function(){
-          var subtotal = this.subtotal();
           for (var customer of this.customers){
                if (customer.loyaltyCard == true) {
-                    subtotal -= this.percentage(subtotal, 5);
+                    this.subtotal -= this.percentage(this.subtotal, 5);
                }
           }
-          return subtotal;
-     }
-
+          return this.subtotal;
+     },
+     // total: function(){
+     //      var subtotal = this.subtotal();
+     //      subtotal = this.overtwenty();
+     //      var total = this.loyal();
+     //      return total;
+     // }
 }
 
 

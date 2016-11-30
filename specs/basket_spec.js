@@ -44,17 +44,18 @@ describe('List', function(){
 
      it('can provide a total price of all purchases', function(){
           basket.add(PennyWhistle);
-          var subtotal = basket.subtotal();
+          var subtotal = basket.subtotal;
           assert.equal(29, subtotal);
      });
 })
 
 describe('Basket', function(){
      it('should calculate a given percentage of the total', function(){
-          var subtotal = basket.subtotal();
+          var subtotal = basket.subtotal;
           var discount = basket.percentage(subtotal, 10);
           assert.equal(2.90, discount);
      });
+
 
      it('should take off 10 percent if the total is over 20', function(){
           var total = basket.overtwenty();
@@ -67,15 +68,26 @@ describe('Basket', function(){
           assert.equal(14, total);
      });
 
-     it('should take off a further 10 percent if the customer has a loyaltyCard', function(){
-          basket.addCustomer(Claudia);
-          var total = basket.loyal();
-          assert.equal(13.30, total);
-     })
-     it('should not take off a further 10 percent if the customer does not have a loyaltyCard', function(){
-          basket.addCustomer(Kyle);
-          basket.removeCustomer(Claudia);
-          var total = basket.loyal();
-          assert.equal(14.00, total);
-     })
+//      it('should take off a further 10 percent if the customer has a loyaltyCard', function(){
+//           basket.addCustomer(Claudia);
+//           var total = basket.loyal();
+//           assert.equal(13.30, total);
+//      })
+//      it('should not take off a further 10 percent if the customer does not have a loyaltyCard', function(){
+//           basket.addCustomer(Kyle);
+//           basket.removeCustomer(Claudia);
+//           var total = basket.loyal();
+//           assert.equal(14.00, total);
+//           assert.equal(basket.customers.length, 1);
+//      })
+// })
+
+// describe('Basket', function(){
+//      it('should apply all discounts', function(){
+//           basket.removeCustomer(Kyle);
+//           basket.addCustomer(Claudia);
+//           basket.add(PennyWhistle)
+//           var total = basket.total();
+//           assert.equal(24.80, total);
+//      })
 })
